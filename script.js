@@ -2,7 +2,6 @@ const slider = document.getElementById('slider');
 const sliderValue = document.getElementById('slider-value');
 const container = document.createElement('div');
 
-// Create grid container
 container.classList.add('container');
 document.body.appendChild(container);
 
@@ -11,13 +10,17 @@ function createCells() {
     const numCells = slider.value;
     const cellSizePercentage = 100 / numCells;
 
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
     for (let i = 0; i < numCells * numCells; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         cell.style.width = `${cellSizePercentage}%`;
         cell.style.height = `${cellSizePercentage}%`;
         cell.addEventListener('mouseenter', () => {
-            cell.style.backgroundColor = 'black';
+            cell.style.backgroundColor = `rgb(${red--}, ${green--}, ${blue--})`;
         });
         container.appendChild(cell);
     }
@@ -31,5 +34,5 @@ slider.addEventListener('input', () => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
-    createCells();
+    createCells(); 
 });
